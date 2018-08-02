@@ -513,6 +513,49 @@
     </param>
   </block>
   <block>
+    <key>blocks_float_to_complex</key>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(953, 376)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>270</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>blocks_float_to_complex_1</value>
+    </param>
+    <param>
+      <key>maxoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>vlen</key>
+      <value>1</value>
+    </param>
+  </block>
+  <block>
     <key>blocks_multiply_xx</key>
     <param>
       <key>alias</key>
@@ -1137,7 +1180,7 @@
     </param>
     <param>
       <key>labels</key>
-      <value>['fft', 'scopeRx','scopeTx']</value>
+      <value>['fft', 'ScopeRx','ScopeTx','Constellation','ScopeConstellation']</value>
     </param>
     <param>
       <key>notebook</key>
@@ -1146,6 +1189,97 @@
     <param>
       <key>style</key>
       <value>wx.NB_TOP</value>
+    </param>
+  </block>
+  <block>
+    <key>wxgui_constellationsink2</key>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>const_size</key>
+      <value>2048</value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>frame_rate</key>
+      <value>5</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(752, 440)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>180</value>
+    </param>
+    <param>
+      <key>gain_mu</key>
+      <value>0.005</value>
+    </param>
+    <param>
+      <key>grid_pos</key>
+      <value></value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>wxgui_constellationsink2_0</value>
+    </param>
+    <param>
+      <key>loop_bw</key>
+      <value>6.28/100.0</value>
+    </param>
+    <param>
+      <key>M</key>
+      <value>4</value>
+    </param>
+    <param>
+      <key>fmax</key>
+      <value>0.06</value>
+    </param>
+    <param>
+      <key>mu</key>
+      <value>0.5</value>
+    </param>
+    <param>
+      <key>notebook</key>
+      <value>notebook_0,3</value>
+    </param>
+    <param>
+      <key>omega_limit</key>
+      <value>0.005</value>
+    </param>
+    <param>
+      <key>samp_rate</key>
+      <value>samp_rate</value>
+    </param>
+    <param>
+      <key>symbol_rate</key>
+      <value>samp_rate/4.</value>
+    </param>
+    <param>
+      <key>theta</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>title</key>
+      <value>Constellation Plot</value>
+    </param>
+    <param>
+      <key>win_size</key>
+      <value></value>
     </param>
   </block>
   <block>
@@ -1528,6 +1662,93 @@
       <value>Counts</value>
     </param>
   </block>
+  <block>
+    <key>wxgui_scopesink2</key>
+    <param>
+      <key>ac_couple</key>
+      <value>False</value>
+    </param>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(1024, 535)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>grid_pos</key>
+      <value></value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>wxgui_scopesink2_1</value>
+    </param>
+    <param>
+      <key>notebook</key>
+      <value>notebook_0,4</value>
+    </param>
+    <param>
+      <key>num_inputs</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>samp_rate</key>
+      <value>samp_rate</value>
+    </param>
+    <param>
+      <key>t_scale</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>title</key>
+      <value>Scope Plot</value>
+    </param>
+    <param>
+      <key>trig_mode</key>
+      <value>wxgui.TRIG_MODE_AUTO</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>complex</value>
+    </param>
+    <param>
+      <key>v_offset</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>v_scale</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>win_size</key>
+      <value></value>
+    </param>
+    <param>
+      <key>xy_mode</key>
+      <value>False</value>
+    </param>
+    <param>
+      <key>y_axis_label</key>
+      <value>Counts</value>
+    </param>
+  </block>
   <connection>
     <source_block_id>analog_const_source_x_0</source_block_id>
     <sink_block_id>blocks_sub_xx_0</sink_block_id>
@@ -1578,6 +1799,18 @@
   </connection>
   <connection>
     <source_block_id>blocks_char_to_float_1</source_block_id>
+    <sink_block_id>blocks_float_to_complex_1</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>1</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>blocks_char_to_float_1</source_block_id>
+    <sink_block_id>blocks_float_to_complex_1</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>blocks_char_to_float_1</source_block_id>
     <sink_block_id>wxgui_scopesink2_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
@@ -1591,6 +1824,18 @@
   <connection>
     <source_block_id>blocks_float_to_complex_0</source_block_id>
     <sink_block_id>blocks_sub_xx_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>blocks_float_to_complex_1</source_block_id>
+    <sink_block_id>wxgui_constellationsink2_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>blocks_float_to_complex_1</source_block_id>
+    <sink_block_id>wxgui_scopesink2_1</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
