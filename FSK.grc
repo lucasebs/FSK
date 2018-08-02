@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<?grc format='1' created='3.7.11'?>
+<?grc format='1' created='3.7.9'?>
 <flow_graph>
   <timestamp>Wed Aug  1 21:31:17 2018</timestamp>
   <block>
@@ -105,7 +105,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>44000</value>
+      <value>44100</value>
     </param>
   </block>
   <block>
@@ -132,7 +132,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(272, 548)</value>
+      <value>(336, 556)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -152,7 +152,7 @@
     </param>
     <param>
       <key>type</key>
-      <value>float</value>
+      <value>complex</value>
     </param>
   </block>
   <block>
@@ -250,7 +250,7 @@
     </param>
     <param>
       <key>type</key>
-      <value>float</value>
+      <value>complex</value>
     </param>
     <param>
       <key>samp_rate</key>
@@ -313,7 +313,7 @@
     </param>
     <param>
       <key>type</key>
-      <value>float</value>
+      <value>complex</value>
     </param>
     <param>
       <key>samp_rate</key>
@@ -356,7 +356,7 @@
     </param>
     <param>
       <key>type</key>
-      <value>float</value>
+      <value>complex</value>
     </param>
     <param>
       <key>maxoutbuf</key>
@@ -442,7 +442,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(1096, 332)</value>
+      <value>(1096, 300)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -485,11 +485,11 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>1</value>
+      <value>True</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(864, 48)</value>
+      <value>(240, 633)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -497,7 +497,7 @@
     </param>
     <param>
       <key>id</key>
-      <value>blocks_float_to_complex_1</value>
+      <value>blocks_float_to_complex_0</value>
     </param>
     <param>
       <key>maxoutbuf</key>
@@ -544,7 +544,7 @@
     </param>
     <param>
       <key>type</key>
-      <value>float</value>
+      <value>complex</value>
     </param>
     <param>
       <key>maxoutbuf</key>
@@ -595,7 +595,7 @@
     </param>
     <param>
       <key>type</key>
-      <value>float</value>
+      <value>complex</value>
     </param>
     <param>
       <key>maxoutbuf</key>
@@ -685,7 +685,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(296, 464)</value>
+      <value>(384, 465)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -697,7 +697,7 @@
     </param>
     <param>
       <key>type</key>
-      <value>float</value>
+      <value>complex</value>
     </param>
     <param>
       <key>maxoutbuf</key>
@@ -736,7 +736,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(624, 212)</value>
+      <value>(640, 212)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -760,11 +760,11 @@
     </param>
     <param>
       <key>samples_per_second</key>
-      <value>samp_rate/2</value>
+      <value>samp_rate</value>
     </param>
     <param>
       <key>type</key>
-      <value>float</value>
+      <value>complex</value>
     </param>
     <param>
       <key>vlen</key>
@@ -787,7 +787,7 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>1</value>
+      <value>0</value>
     </param>
     <param>
       <key>_coordinate</key>
@@ -874,7 +874,7 @@
     </param>
     <param>
       <key>repeat</key>
-      <value>True</value>
+      <value>False</value>
     </param>
     <param>
       <key>tags</key>
@@ -886,7 +886,7 @@
     </param>
     <param>
       <key>vector</key>
-      <value>(0,0,0,0)</value>
+      <value>(0,0,1,0)</value>
     </param>
   </block>
   <block>
@@ -905,7 +905,7 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>0</value>
+      <value>1</value>
     </param>
     <param>
       <key>_coordinate</key>
@@ -945,7 +945,7 @@
     </param>
     <param>
       <key>vector</key>
-      <value>(1,1,1,1)</value>
+      <value>(1,1,0,1)</value>
     </param>
   </block>
   <block>
@@ -968,7 +968,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(1096, 288)</value>
+      <value>(1096, 257)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1019,11 +1019,11 @@
     </param>
     <param>
       <key>type</key>
-      <value>fir_filter_fff</value>
+      <value>fir_filter_ccf</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(608, 20)</value>
+      <value>(632, 26)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1059,7 +1059,7 @@
     </param>
     <param>
       <key>win</key>
-      <value>firdes.WIN_HANN</value>
+      <value>firdes.WIN_HAMMING</value>
     </param>
   </block>
   <block>
@@ -1074,7 +1074,7 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>0</value>
+      <value>1</value>
     </param>
     <param>
       <key>_coordinate</key>
@@ -1279,7 +1279,7 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>0</value>
+      <value>1</value>
     </param>
     <param>
       <key>fft_size</key>
@@ -1358,7 +1358,7 @@
     <key>wxgui_scopesink2</key>
     <param>
       <key>ac_couple</key>
-      <value>True</value>
+      <value>False</value>
     </param>
     <param>
       <key>alias</key>
@@ -1378,7 +1378,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(1064, 388)</value>
+      <value>(1064, 362)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1445,7 +1445,7 @@
     <key>wxgui_scopesink2</key>
     <param>
       <key>ac_couple</key>
-      <value>False</value>
+      <value>True</value>
     </param>
     <param>
       <key>alias</key>
@@ -1465,7 +1465,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(600, 284)</value>
+      <value>(632, 282)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1505,7 +1505,7 @@
     </param>
     <param>
       <key>type</key>
-      <value>float</value>
+      <value>complex</value>
     </param>
     <param>
       <key>v_offset</key>
@@ -1513,7 +1513,7 @@
     </param>
     <param>
       <key>v_scale</key>
-      <value>0</value>
+      <value>1</value>
     </param>
     <param>
       <key>win_size</key>
@@ -1560,19 +1560,13 @@
   </connection>
   <connection>
     <source_block_id>blocks_add_xx_0</source_block_id>
-    <sink_block_id>blocks_throttle_0</sink_block_id>
+    <sink_block_id>low_pass_filter_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
   <connection>
     <source_block_id>blocks_char_to_float_0</source_block_id>
-    <sink_block_id>blocks_multiply_xx_0</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>1</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>blocks_char_to_float_0</source_block_id>
-    <sink_block_id>blocks_sub_xx_0</sink_block_id>
+    <sink_block_id>blocks_float_to_complex_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
@@ -1589,8 +1583,14 @@
     <sink_key>0</sink_key>
   </connection>
   <connection>
-    <source_block_id>blocks_float_to_complex_1</source_block_id>
-    <sink_block_id>analog_quadrature_demod_cf_0</sink_block_id>
+    <source_block_id>blocks_float_to_complex_0</source_block_id>
+    <sink_block_id>blocks_multiply_xx_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>1</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>blocks_float_to_complex_0</source_block_id>
+    <sink_block_id>blocks_sub_xx_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
@@ -1620,7 +1620,13 @@
   </connection>
   <connection>
     <source_block_id>blocks_throttle_0</source_block_id>
-    <sink_block_id>low_pass_filter_0</sink_block_id>
+    <sink_block_id>analog_quadrature_demod_cf_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>blocks_throttle_0</source_block_id>
+    <sink_block_id>wxgui_scopesink2_0_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
@@ -1650,13 +1656,7 @@
   </connection>
   <connection>
     <source_block_id>low_pass_filter_0</source_block_id>
-    <sink_block_id>blocks_float_to_complex_1</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>0</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>low_pass_filter_0</source_block_id>
-    <sink_block_id>wxgui_scopesink2_0_0</sink_block_id>
+    <sink_block_id>blocks_throttle_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
