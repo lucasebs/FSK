@@ -3,7 +3,7 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: Top Block Mfsk
-# Generated: Thu Aug  2 16:56:19 2018
+# Generated: Thu Aug  2 18:34:10 2018
 ##################################################
 
 if __name__ == '__main__':
@@ -50,14 +50,36 @@ class top_block_MFSK(grc_wxgui.top_block_gui):
         ##################################################
         # Blocks
         ##################################################
-        self.notebook_0 = self.notebook_0 = wx.Notebook(self.GetWin(), style=wx.NB_TOP)
-        self.notebook_0.AddPage(grc_wxgui.Panel(self.notebook_0), "fft")
+        self.notebook_2 = self.notebook_2 = wx.Notebook(self.GetWin(), style=wx.NB_TOP)
+        self.notebook_2.AddPage(grc_wxgui.Panel(self.notebook_2), "FFT")
+        self.notebook_2.AddPage(grc_wxgui.Panel(self.notebook_2), "SCOPE")
+        self.Add(self.notebook_2)
+        self.notebook_1 = self.notebook_1 = wx.Notebook(self.notebook_2.GetPage(0).GetWin(), style=wx.NB_TOP)
+        self.notebook_1.AddPage(grc_wxgui.Panel(self.notebook_1), "fftSource")
+        self.notebook_1.AddPage(grc_wxgui.Panel(self.notebook_1), "fftDemodulated")
+        self.notebook_2.GetPage(0).Add(self.notebook_1)
+        self.notebook_0 = self.notebook_0 = wx.Notebook(self.notebook_2.GetPage(1).GetWin(), style=wx.NB_TOP)
         self.notebook_0.AddPage(grc_wxgui.Panel(self.notebook_0), "ScopeRx")
+        self.notebook_0.AddPage(grc_wxgui.Panel(self.notebook_0), "ScopeSource")
         self.notebook_0.AddPage(grc_wxgui.Panel(self.notebook_0), "Constellation")
         self.notebook_0.AddPage(grc_wxgui.Panel(self.notebook_0), "ScopeConstellation")
-        self.Add(self.notebook_0)
-        self.wxgui_scopesink2_0 = scopesink2.scope_sink_f(
+        self.notebook_2.GetPage(1).Add(self.notebook_0)
+        self.wxgui_scopesink2_1 = scopesink2.scope_sink_c(
         	self.notebook_0.GetPage(1).GetWin(),
+        	title="Scope Plot",
+        	sample_rate=samp_rate,
+        	v_scale=0,
+        	v_offset=0,
+        	t_scale=0,
+        	ac_couple=True,
+        	xy_mode=False,
+        	num_inputs=1,
+        	trig_mode=wxgui.TRIG_MODE_AUTO,
+        	y_axis_label="Counts",
+        )
+        self.notebook_0.GetPage(1).Add(self.wxgui_scopesink2_1.win)
+        self.wxgui_scopesink2_0 = scopesink2.scope_sink_f(
+        	self.notebook_0.GetPage(0).GetWin(),
         	title="Scope Plot - Source - Modulated - Demodulated",
         	sample_rate=samp_rate,
         	v_scale=4,
@@ -69,9 +91,9 @@ class top_block_MFSK(grc_wxgui.top_block_gui):
         	trig_mode=wxgui.TRIG_MODE_AUTO,
         	y_axis_label="Counts",
         )
-        self.notebook_0.GetPage(1).Add(self.wxgui_scopesink2_0.win)
+        self.notebook_0.GetPage(0).Add(self.wxgui_scopesink2_0.win)
         self.wxgui_fftsink2_0_0 = fftsink2.fft_sink_c(
-        	self.notebook_0.GetPage(0).GetWin(),
+        	self.notebook_1.GetPage(0).GetWin(),
         	baseband_freq=0,
         	y_per_div=10,
         	y_divs=10,
@@ -85,9 +107,9 @@ class top_block_MFSK(grc_wxgui.top_block_gui):
         	title="FFT Plot Source",
         	peak_hold=False,
         )
-        self.notebook_0.GetPage(0).Add(self.wxgui_fftsink2_0_0.win)
+        self.notebook_1.GetPage(0).Add(self.wxgui_fftsink2_0_0.win)
         self.wxgui_fftsink2_0 = fftsink2.fft_sink_f(
-        	self.notebook_0.GetPage(0).GetWin(),
+        	self.notebook_1.GetPage(1).GetWin(),
         	baseband_freq=0,
         	y_per_div=10,
         	y_divs=10,
@@ -101,7 +123,7 @@ class top_block_MFSK(grc_wxgui.top_block_gui):
         	title="FFT Plot Demodulated",
         	peak_hold=False,
         )
-        self.notebook_0.GetPage(0).Add(self.wxgui_fftsink2_0.win)
+        self.notebook_1.GetPage(1).Add(self.wxgui_fftsink2_0.win)
         self.wxgui_constellationsink2_0_0 = constsink_gl.const_sink_c(
         	self.notebook_0.GetPage(2).GetWin(),
         	title="Constellation Plot Modulated",
@@ -134,9 +156,6 @@ class top_block_MFSK(grc_wxgui.top_block_gui):
         	omega_limit=0.005,
         )
         self.notebook_0.GetPage(3).Add(self.wxgui_constellationsink2_0.win)
-        self.nb1 = self.nb1 = wx.Notebook(self.GetWin(), style=wx.NB_LEFT)
-        self.nb1.AddPage(grc_wxgui.Panel(self.nb1), "fftsource")
-        self.Add(self.nb1)
         self.low_pass_filter_0 = filter.fir_filter_ccf(1, firdes.low_pass(
         	1, samp_rate, 8000, 1000, firdes.WIN_HAMMING, 6.76))
         self.digital_binary_slicer_fb_0 = digital.binary_slicer_fb()
@@ -158,6 +177,7 @@ class top_block_MFSK(grc_wxgui.top_block_gui):
         self.blocks_multiply_xx_0_1 = blocks.multiply_vcc(1)
         self.blocks_multiply_xx_0_0 = blocks.multiply_vcc(1)
         self.blocks_multiply_xx_0 = blocks.multiply_vcc(1)
+        self.blocks_multiply_const_vxx_1 = blocks.multiply_const_vcc((-1, ))
         self.blocks_multiply_const_vxx_0 = blocks.multiply_const_vff((-1, ))
         self.blocks_float_to_complex_1 = blocks.float_to_complex(1)
         self.blocks_float_to_complex_0_2 = blocks.float_to_complex(1)
@@ -194,9 +214,10 @@ class top_block_MFSK(grc_wxgui.top_block_gui):
         self.connect((self.analog_sig_source_x_0_0_0_1_1, 0), (self.blocks_multiply_xx_0_0, 0))    
         self.connect((self.analog_sig_source_x_0_0_0_2, 0), (self.blocks_multiply_xx_0_1_0, 0))    
         self.connect((self.analog_sig_source_x_0_0_1, 0), (self.blocks_multiply_xx_0, 0))    
-        self.connect((self.blocks_add_xx_0, 0), (self.low_pass_filter_0, 0))    
+        self.connect((self.blocks_add_xx_0, 0), (self.blocks_multiply_const_vxx_1, 0))    
         self.connect((self.blocks_add_xx_0, 0), (self.wxgui_constellationsink2_0_0, 0))    
         self.connect((self.blocks_add_xx_0, 0), (self.wxgui_fftsink2_0_0, 0))    
+        self.connect((self.blocks_add_xx_0, 0), (self.wxgui_scopesink2_1, 0))    
         self.connect((self.blocks_char_to_float_0, 0), (self.blocks_float_to_complex_0, 0))    
         self.connect((self.blocks_char_to_float_0_0, 0), (self.blocks_float_to_complex_0_0, 0))    
         self.connect((self.blocks_char_to_float_0_1, 0), (self.blocks_float_to_complex_0_1, 0))    
@@ -213,11 +234,12 @@ class top_block_MFSK(grc_wxgui.top_block_gui):
         self.connect((self.blocks_float_to_complex_0_2, 0), (self.blocks_multiply_xx_0_1, 1))    
         self.connect((self.blocks_float_to_complex_1, 0), (self.wxgui_constellationsink2_0, 0))    
         self.connect((self.blocks_multiply_const_vxx_0, 0), (self.blocks_sub_xx_1, 0))    
+        self.connect((self.blocks_multiply_const_vxx_1, 0), (self.low_pass_filter_0, 0))    
         self.connect((self.blocks_multiply_xx_0, 0), (self.blocks_add_xx_0, 0))    
-        self.connect((self.blocks_multiply_xx_0_0, 0), (self.blocks_add_xx_0, 1))    
+        self.connect((self.blocks_multiply_xx_0_0, 0), (self.blocks_add_xx_0, 4))    
         self.connect((self.blocks_multiply_xx_0_1, 0), (self.blocks_add_xx_0, 2))    
         self.connect((self.blocks_multiply_xx_0_1_0, 0), (self.blocks_add_xx_0, 3))    
-        self.connect((self.blocks_multiply_xx_0_1_0_0, 0), (self.blocks_add_xx_0, 4))    
+        self.connect((self.blocks_multiply_xx_0_1_0_0, 0), (self.blocks_add_xx_0, 1))    
         self.connect((self.blocks_repeat_0, 0), (self.blocks_char_to_float_0, 0))    
         self.connect((self.blocks_repeat_0_0, 0), (self.blocks_char_to_float_0_0, 0))    
         self.connect((self.blocks_repeat_0_1, 0), (self.blocks_char_to_float_0_1, 0))    
@@ -252,11 +274,12 @@ class top_block_MFSK(grc_wxgui.top_block_gui):
         self.analog_sig_source_x_0_0_1.set_frequency(self.samp_rate/100)
         self.blocks_throttle_0.set_sample_rate(self.samp_rate)
         self.low_pass_filter_0.set_taps(firdes.low_pass(1, self.samp_rate, 8000, 1000, firdes.WIN_HAMMING, 6.76))
-        self.wxgui_constellationsink2_0.set_sample_rate(self.samp_rate)
-        self.wxgui_constellationsink2_0_0.set_sample_rate(self.samp_rate)
+        self.wxgui_fftsink2_0_0.set_sample_rate(self.samp_rate)
         self.wxgui_scopesink2_0.set_sample_rate(self.samp_rate)
         self.wxgui_fftsink2_0.set_sample_rate(self.samp_rate)
-        self.wxgui_fftsink2_0_0.set_sample_rate(self.samp_rate)
+        self.wxgui_constellationsink2_0.set_sample_rate(self.samp_rate)
+        self.wxgui_constellationsink2_0_0.set_sample_rate(self.samp_rate)
+        self.wxgui_scopesink2_1.set_sample_rate(self.samp_rate)
 
 
 def main(top_block_cls=top_block_MFSK, options=None):
