@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 ##################################################
 # GNU Radio Python Flow Graph
-# Title: Top Block
-# Generated: Thu Aug  2 11:53:27 2018
+# Title: Top Block Mfsk
+# Generated: Thu Aug  2 14:20:18 2018
 ##################################################
 
 if __name__ == '__main__':
@@ -35,10 +35,10 @@ import math
 import wx
 
 
-class top_block(grc_wxgui.top_block_gui):
+class top_block_MFSK(grc_wxgui.top_block_gui):
 
     def __init__(self):
-        grc_wxgui.top_block_gui.__init__(self, title="Top Block")
+        grc_wxgui.top_block_gui.__init__(self, title="Top Block Mfsk")
         _icon_path = "/usr/share/icons/hicolor/32x32/apps/gnuradio-grc.png"
         self.SetIcon(wx.Icon(_icon_path, wx.BITMAP_TYPE_ANY))
 
@@ -140,7 +140,7 @@ class top_block(grc_wxgui.top_block_gui):
         self.low_pass_filter_0 = filter.fir_filter_ccf(1, firdes.low_pass(
         	1, samp_rate, 8000, 1000, firdes.WIN_HAMMING, 6.76))
         self.digital_binary_slicer_fb_0 = digital.binary_slicer_fb()
-        self.blocks_vector_source_x_0_1 = blocks.vector_source_b((1,1,0,1), True, 1, [])
+        self.blocks_vector_source_x_0_1 = blocks.vector_source_b((1,1,0,1,1,1,0,1,), True, 1, [])
         self.blocks_throttle_0 = blocks.throttle(gr.sizeof_gr_complex*1, samp_rate,True)
         self.blocks_sub_xx_1 = blocks.sub_ff(1)
         self.blocks_sub_xx_0 = blocks.sub_cc(1)
@@ -154,7 +154,7 @@ class top_block(grc_wxgui.top_block_gui):
         self.blocks_char_to_float_0 = blocks.char_to_float(1, 1)
         self.blocks_add_xx_0 = blocks.add_vcc(1)
         self.analog_sig_source_x_0_0_0 = analog.sig_source_c(samp_rate, analog.GR_COS_WAVE, 400, 5, 0)
-        self.analog_sig_source_x_0_0 = analog.sig_source_c(samp_rate, analog.GR_COS_WAVE, 44000, 5, 0)
+        self.analog_sig_source_x_0_0 = analog.sig_source_c(samp_rate, analog.GR_COS_WAVE, samp_rate, 5, 0)
         self.analog_quadrature_demod_cf_0 = analog.quadrature_demod_cf(-100)
         self.analog_const_source_x_0_0 = analog.sig_source_f(0, analog.GR_CONST_WAVE, 0, 0, 3)
         self.analog_const_source_x_0 = analog.sig_source_c(0, analog.GR_CONST_WAVE, 0, 0, 1)
@@ -196,8 +196,6 @@ class top_block(grc_wxgui.top_block_gui):
 
     def set_samp_rate(self, samp_rate):
         self.samp_rate = samp_rate
-        self.analog_sig_source_x_0_0.set_sampling_freq(self.samp_rate)
-        self.analog_sig_source_x_0_0_0.set_sampling_freq(self.samp_rate)
         self.blocks_throttle_0.set_sample_rate(self.samp_rate)
         self.low_pass_filter_0.set_taps(firdes.low_pass(1, self.samp_rate, 8000, 1000, firdes.WIN_HAMMING, 6.76))
         self.wxgui_constellationsink2_0.set_sample_rate(self.samp_rate)
@@ -205,9 +203,12 @@ class top_block(grc_wxgui.top_block_gui):
         self.wxgui_fftsink2_0.set_sample_rate(self.samp_rate)
         self.wxgui_fftsink2_0_0.set_sample_rate(self.samp_rate)
         self.wxgui_scopesink2_0.set_sample_rate(self.samp_rate)
+        self.analog_sig_source_x_0_0_0.set_sampling_freq(self.samp_rate)
+        self.analog_sig_source_x_0_0.set_sampling_freq(self.samp_rate)
+        self.analog_sig_source_x_0_0.set_frequency(self.samp_rate)
 
 
-def main(top_block_cls=top_block, options=None):
+def main(top_block_cls=top_block_MFSK, options=None):
 
     tb = top_block_cls()
     tb.Start(True)

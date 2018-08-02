@@ -3,7 +3,7 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: Top Block Bfsk
-# Generated: Thu Aug  2 12:57:45 2018
+# Generated: Thu Aug  2 14:21:10 2018
 ##################################################
 
 if __name__ == '__main__':
@@ -153,8 +153,8 @@ class top_block_BFSK(grc_wxgui.top_block_gui):
         self.blocks_char_to_float_1 = blocks.char_to_float(1, 1)
         self.blocks_char_to_float_0 = blocks.char_to_float(1, 1)
         self.blocks_add_xx_0 = blocks.add_vcc(1)
-        self.analog_sig_source_x_0_0_0 = analog.sig_source_c(samp_rate, analog.GR_COS_WAVE, 400, 5, 0)
-        self.analog_sig_source_x_0_0 = analog.sig_source_c(samp_rate, analog.GR_COS_WAVE, 44000, 5, 0)
+        self.analog_sig_source_x_0_0_0 = analog.sig_source_c(samp_rate, analog.GR_COS_WAVE, 400, 1, 0)
+        self.analog_sig_source_x_0_0 = analog.sig_source_c(samp_rate, analog.GR_COS_WAVE, 44000, 1, 0)
         self.analog_quadrature_demod_cf_0 = analog.quadrature_demod_cf(-100)
         self.analog_const_source_x_0_0 = analog.sig_source_f(0, analog.GR_CONST_WAVE, 0, 0, 3)
         self.analog_const_source_x_0 = analog.sig_source_c(0, analog.GR_CONST_WAVE, 0, 0, 1)
@@ -196,8 +196,6 @@ class top_block_BFSK(grc_wxgui.top_block_gui):
 
     def set_samp_rate(self, samp_rate):
         self.samp_rate = samp_rate
-        self.analog_sig_source_x_0_0.set_sampling_freq(self.samp_rate)
-        self.analog_sig_source_x_0_0_0.set_sampling_freq(self.samp_rate)
         self.blocks_throttle_0.set_sample_rate(self.samp_rate)
         self.low_pass_filter_0.set_taps(firdes.low_pass(1, self.samp_rate, 8000, 1000, firdes.WIN_HAMMING, 6.76))
         self.wxgui_constellationsink2_0.set_sample_rate(self.samp_rate)
@@ -205,6 +203,8 @@ class top_block_BFSK(grc_wxgui.top_block_gui):
         self.wxgui_fftsink2_0.set_sample_rate(self.samp_rate)
         self.wxgui_fftsink2_0_0.set_sample_rate(self.samp_rate)
         self.wxgui_scopesink2_0.set_sample_rate(self.samp_rate)
+        self.analog_sig_source_x_0_0_0.set_sampling_freq(self.samp_rate)
+        self.analog_sig_source_x_0_0.set_sampling_freq(self.samp_rate)
 
 
 def main(top_block_cls=top_block_BFSK, options=None):
