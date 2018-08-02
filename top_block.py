@@ -3,7 +3,7 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: Top Block
-# Generated: Thu Aug  2 11:21:42 2018
+# Generated: Thu Aug  2 11:53:27 2018
 ##################################################
 
 if __name__ == '__main__':
@@ -103,7 +103,7 @@ class top_block(grc_wxgui.top_block_gui):
         )
         self.notebook_0.GetPage(0).Add(self.wxgui_fftsink2_0.win)
         self.wxgui_constellationsink2_0_0 = constsink_gl.const_sink_c(
-        	self.GetWin(),
+        	self.notebook_0.GetPage(2).GetWin(),
         	title="Constellation Plot Modulated",
         	sample_rate=samp_rate,
         	frame_rate=5,
@@ -117,7 +117,7 @@ class top_block(grc_wxgui.top_block_gui):
         	symbol_rate=samp_rate/4.,
         	omega_limit=0.005,
         )
-        self.Add(self.wxgui_constellationsink2_0_0.win)
+        self.notebook_0.GetPage(2).Add(self.wxgui_constellationsink2_0_0.win)
         self.wxgui_constellationsink2_0 = constsink_gl.const_sink_c(
         	self.notebook_0.GetPage(3).GetWin(),
         	title="Constellation Plot Demodulated",
@@ -156,13 +156,13 @@ class top_block(grc_wxgui.top_block_gui):
         self.analog_sig_source_x_0_0_0 = analog.sig_source_c(samp_rate, analog.GR_COS_WAVE, 400, 5, 0)
         self.analog_sig_source_x_0_0 = analog.sig_source_c(samp_rate, analog.GR_COS_WAVE, 44000, 5, 0)
         self.analog_quadrature_demod_cf_0 = analog.quadrature_demod_cf(-100)
-        self.analog_const_source_x_0_0 = analog.sig_source_f(0, analog.GR_CONST_WAVE, 0, 0, 2)
+        self.analog_const_source_x_0_0 = analog.sig_source_f(0, analog.GR_CONST_WAVE, 0, 0, 3)
         self.analog_const_source_x_0 = analog.sig_source_c(0, analog.GR_CONST_WAVE, 0, 0, 1)
 
         ##################################################
         # Connections
         ##################################################
-        self.connect((self.analog_const_source_x_0, 0), (self.blocks_sub_xx_0, 1))    
+        self.connect((self.analog_const_source_x_0, 0), (self.blocks_sub_xx_0, 0))    
         self.connect((self.analog_const_source_x_0_0, 0), (self.blocks_sub_xx_1, 1))    
         self.connect((self.analog_quadrature_demod_cf_0, 0), (self.digital_binary_slicer_fb_0, 0))    
         self.connect((self.analog_quadrature_demod_cf_0, 0), (self.wxgui_fftsink2_0, 0))    
@@ -174,16 +174,16 @@ class top_block(grc_wxgui.top_block_gui):
         self.connect((self.blocks_char_to_float_0, 0), (self.wxgui_fftsink2_0_0, 0))    
         self.connect((self.blocks_char_to_float_1, 0), (self.blocks_float_to_complex_1, 1))    
         self.connect((self.blocks_char_to_float_1, 0), (self.blocks_float_to_complex_1, 0))    
-        self.connect((self.blocks_char_to_float_1, 0), (self.wxgui_scopesink2_0, 0))    
+        self.connect((self.blocks_char_to_float_1, 0), (self.wxgui_scopesink2_0, 1))    
         self.connect((self.blocks_complex_to_float_0, 0), (self.wxgui_scopesink2_0, 2))    
         self.connect((self.blocks_float_to_complex_0, 0), (self.blocks_multiply_xx_0, 1))    
-        self.connect((self.blocks_float_to_complex_0, 0), (self.blocks_sub_xx_0, 0))    
+        self.connect((self.blocks_float_to_complex_0, 0), (self.blocks_sub_xx_0, 1))    
         self.connect((self.blocks_float_to_complex_1, 0), (self.wxgui_constellationsink2_0, 0))    
         self.connect((self.blocks_multiply_xx_0, 0), (self.blocks_add_xx_0, 0))    
         self.connect((self.blocks_multiply_xx_0_0, 0), (self.blocks_add_xx_0, 1))    
         self.connect((self.blocks_repeat_0, 0), (self.blocks_char_to_float_0, 0))    
         self.connect((self.blocks_sub_xx_0, 0), (self.blocks_multiply_xx_0_0, 1))    
-        self.connect((self.blocks_sub_xx_1, 0), (self.wxgui_scopesink2_0, 1))    
+        self.connect((self.blocks_sub_xx_1, 0), (self.wxgui_scopesink2_0, 0))    
         self.connect((self.blocks_throttle_0, 0), (self.analog_quadrature_demod_cf_0, 0))    
         self.connect((self.blocks_throttle_0, 0), (self.blocks_complex_to_float_0, 0))    
         self.connect((self.blocks_throttle_0, 0), (self.wxgui_constellationsink2_0_0, 0))    
@@ -198,12 +198,12 @@ class top_block(grc_wxgui.top_block_gui):
         self.samp_rate = samp_rate
         self.analog_sig_source_x_0_0.set_sampling_freq(self.samp_rate)
         self.analog_sig_source_x_0_0_0.set_sampling_freq(self.samp_rate)
-        self.low_pass_filter_0.set_taps(firdes.low_pass(1, self.samp_rate, 8000, 1000, firdes.WIN_HAMMING, 6.76))
-        self.wxgui_fftsink2_0_0.set_sample_rate(self.samp_rate)
-        self.wxgui_constellationsink2_0_0.set_sample_rate(self.samp_rate)
-        self.wxgui_constellationsink2_0.set_sample_rate(self.samp_rate)
-        self.wxgui_fftsink2_0.set_sample_rate(self.samp_rate)
         self.blocks_throttle_0.set_sample_rate(self.samp_rate)
+        self.low_pass_filter_0.set_taps(firdes.low_pass(1, self.samp_rate, 8000, 1000, firdes.WIN_HAMMING, 6.76))
+        self.wxgui_constellationsink2_0.set_sample_rate(self.samp_rate)
+        self.wxgui_constellationsink2_0_0.set_sample_rate(self.samp_rate)
+        self.wxgui_fftsink2_0.set_sample_rate(self.samp_rate)
+        self.wxgui_fftsink2_0_0.set_sample_rate(self.samp_rate)
         self.wxgui_scopesink2_0.set_sample_rate(self.samp_rate)
 
 
